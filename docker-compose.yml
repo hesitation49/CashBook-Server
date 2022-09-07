@@ -21,3 +21,12 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       TZ: ${DB_TIMEZONE:-UTC}
+
+  node:
+    build: ./node
+    volumes:
+      - ${APP_WORKING_DIR}:/usr/src/app
+    ports:
+      - ${APP_PORT:-3000}:3000
+    tty: true
+    stdin_open: true
